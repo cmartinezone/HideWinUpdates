@@ -4,9 +4,9 @@ DESCRIPTION:  Set Windows 10 Updates as hidden.
 The script hides the Windows updates from windows updates list.
 
 EXAMPLE: 
- Get list of updates  : .\HideWinUpdates.ps1 -Action GetUpdateList
- Hide Single Update   : .\HideWinUpdates.ps1 -Action HideUpdate -IDs "XXXXXXX"
- Hide Multiple Updates: .\HideWinUpdates.ps1 -Action HideUpdate -IDs ("XXXXXXX","XXXXXXX")
+ Get list of updates IDs : .\HideWinUpdates.ps1 -Action GetUpdateList
+ Hide Single Update      : .\HideWinUpdates.ps1 -Action HideUpdate -IDs "XXXXXXX"
+ Hide Multiple Updates   : .\HideWinUpdates.ps1 -Action HideUpdate -IDs ("XXXXXXX","XXXXXXX")
 #>
 Param(
     [Parameter(Mandatory = $true, Position = 0, ValueFromPipeLine = $false)]
@@ -84,5 +84,4 @@ if ($Action -eq "GetUpdateList" ) {
 if ($Action -eq "HideUpdate") {
     HideUpdates -UpdateIDs $IDs
 }
-
 
