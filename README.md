@@ -1,8 +1,8 @@
 # HideWinUpdates v1.0
 Hide Windows Updates to prevent to get them install.
-The development of this script has been, in base of reversed engineering of Windows Hide and Show updates "ushowhide.diagcab".
+The development of this script has been based after reversed engineering of Windows “Show or Hide Updates” [ushowhide.diagcab](https://support.microsoft.com/en-us/help/3073930/how-to-temporarily-prevent-a-driver-update-from-reinstalling-in-window).
 
-###Use Cases: 
+## Use Cases:
 ```
 * Get list of updates  : .\HideWinUpdates.ps1 -Action GetUpdateList
 * Hide Single Update   : .\HideWinUpdates.ps1 -Action HideUpdate -IDs "XXXXXXX"
