@@ -3,7 +3,7 @@ Hide Windows Updates to prevent to get them install. The development of this scr
 
 ## Use Cases:
 ```
-* Get list of updates  : .\HideWinUpdates.ps1 -Action GetUpdateList
+* Get list of updates IDs : .\HideWinUpdates.ps1 -Action GetUpdateList
 * Hide Single Update   : .\HideWinUpdates.ps1 -Action HideUpdate -IDs "XXXXXXX"
 * Hide Multiple Updates: .\HideWinUpdates.ps1 -Action HideUpdate -IDs ("XXXXXXX","XXXXXXX")
 ```
