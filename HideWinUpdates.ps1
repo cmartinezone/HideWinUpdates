@@ -52,18 +52,20 @@ function HideUpdates {
     $Updatelist | ForEach-Object {
 
         #If the Update exists on the object array of updates  and it is already hidden. 
-        if ( $UpdateIDs -in $_.KBArticleIDs -and $true -eq $_.IsHidden ) {
+        if ( $_.KBArticleIDs -in $UpdateIDs -and $true -eq $_.IsHidden ) {
             Write-Host    
-            Write-Host "The Update is already hidden." -ForegroundColor Green                
+            Write-Host "The Update is already hidden: " -ForegroundColor Yellow -NoNewline 
+            Write-Host $_.KBArticleIDs -ForegroundColor Green            
             $LastUpdateStatus += $_ #store update status.
         }
         #If the update is exists on the object array of updates and it is not hidden.
-        if ( $UpdateIDs -in $_.KBArticleIDs -and $false -eq $_.IsHidden ) {       
+        if ( $_.KBArticleIDs -in $UpdateIDs -and $false -eq $_.IsHidden ) {       
             try {
                 #Set Update as Hidden.
                 $_.IsHidden = $true  
                 Write-Host
-                Write-Host "The Update has been successfully hidden." -ForegroundColor Green
+                Write-Host "The Update has been successfully hidden: " -ForegroundColor Yellow -NoNewline
+                Write-Host $_.KBArticleIDs -ForegroundColor Green 
                 $LastUpdateStatus += $_ #store update status.
         
             }
@@ -77,11 +79,13 @@ function HideUpdates {
     $LastUpdateStatus | Select-Object Title, IsHidden 
 }
 
-if ($Action -eq "GetUpdateList" ) {
+if ($Action -eq "GetUpdateList" -and $null -eq $IDs ) {
+
     GetUpdateIDs
 }
 
-if ($Action -eq "HideUpdate") {
+if ($Action -eq "HideUpdate" -and $null -ne $IDs) {
+   
     HideUpdates -UpdateIDs $IDs
 }
 
